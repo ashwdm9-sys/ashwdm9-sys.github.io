@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HW06 – Dual Viewport WebGL2</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    #wrap {
+      position: relative;
+      width: 1400px;
+      height: 700px;
+      transform-origin: top center;
+      flex-shrink: 0;
+    }
+    canvas { display: block; }
+    #hud {
+      position: absolute; top: 6px; left: 6px;
+      color: #eee; font: 12px/1.75 monospace;
+      pointer-events: none; white-space: pre;
+      text-shadow: 1px 1px 3px #000, -1px -1px 3px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="c" width="1400" height="700"></canvas>
+    <div id="hud"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+
+  <script>
+    function fitCanvas() {
+      const wrap  = document.getElementById('wrap');
+      const scaleX = window.innerWidth  / 1400;
+      const scaleY = window.innerHeight / 700;
+      const scale  = Math.min(scaleX, scaleY, 1.0); 
+      wrap.style.transform = `scale(${scale})`;
+      document.body.style.height = `${700 * scale}px`;
+    }
+    window.addEventListener('resize', fitCanvas);
+    fitCanvas();
+  </script>
+
+  <script src="hw06.js"></script>
+</body>
+</html>
