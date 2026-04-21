@@ -42,7 +42,7 @@ const modelMatrices = CUBE_POSITIONS.map(pos => {
 const axes = new Axes(gl, 5.0);
 
 // ── FP 카메라 상태 ────────────────────────────────────────────────────────────
-let camPos   = vec3.fromValues(0, 2, 7);   // 초기 카메라 위치
+let camPos   = vec3.fromValues(0, 0, 5);   // 초기 카메라 위치
 let camFront = vec3.fromValues(0, 0, -1);
 let camUp    = vec3.fromValues(0, 1, 0);
 let yaw   = -90.0;
